@@ -23,7 +23,7 @@ public class Main{
         tf1.setBounds(120, 110, 80, 25);
         tf2.setBounds(120, 140, 80, 25);
         tf3.setBounds(120, 170, 80, 25);
-
+        tf3.setEditable(false);
 
         Button bt1 = new Button("Calculate");
         Button bt2 = new Button("Clear");
@@ -33,21 +33,25 @@ public class Main{
         f.add(lb1);
         f.add(lb2);
         f.add(lb3);
-
         f.add(tf1);
         f.add(tf2);
         f.add(tf3);
-
         f.add(bt1);
         f.add(bt2);
 
-
         bt1.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                int num1 = Integer.parseInt(tf1.getText());
-                int num2 = Integer.parseInt(tf2.getText());
-                int result = num1 + num2;
-                tf3.setText(String.valueOf(result));
+                try {
+                    int num1 = Integer.parseInt(tf1.getText());
+                    int num2 = Integer.parseInt(tf2.getText());
+                    int result = num1 + num2;
+                    tf3.setText(String.valueOf(result));
+                }
+                catch (NumberFormatException ne){
+                    tf1.setText("");
+                    tf2.setText("");
+                    tf3.setText("error");
+                }
             }
         });
 
